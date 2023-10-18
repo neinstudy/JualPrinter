@@ -3,7 +3,7 @@
         <img src="img/logoprinter.png" width="70" height="70" class="d-inline-block align-top" alt="">
         <p style="color: rgb(0, 0, 0); font-size: 20px; margin-right: 10px; text-align: left; display: inline-block; margin-top: 10px;"> <!-- Menambahkan margin-top -->
             Jual Beli Printer <br>
-            welcome admin hehe :D
+            welcome admin hehe xixixi :D
         </p>
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
