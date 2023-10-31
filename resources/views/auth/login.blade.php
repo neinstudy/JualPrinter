@@ -1,14 +1,14 @@
 @extends('layouts.header')
 @section('body')
 
-<body class="text-center">
+<body class="text-center"   >
   <main class="form-signin">
         <form action="{{ route('auth.authenticate') }}" method="POST">
             @csrf
             <img class="mb-4" src="{{ asset('img/logoprinter.png') }}" alt="" width="72" height="57">
             <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
-            <div class="form-floating">
+            <div class="form-floating mb-3">
                 <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" placeholder="name@example.com">
                 <label for="email">Email address</label>
             </div>
@@ -16,7 +16,7 @@
                 <div class="text-danger">{{ $message }}</div>
             @enderror
 
-            <div class="form-floating">
+            <div class="form-floating mb-3">
                 <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                 <label for="password">Password</label>
             </div>
