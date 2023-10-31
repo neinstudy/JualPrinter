@@ -38,11 +38,13 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
 
 
-// Routes
-// Routes
+// Routes admin
 Route::resource('produk', ProdukController::class);
 Route::get('/create', [ProdukController::class, 'create'])->name('admin.create')->middleware('auth');
 Route::get('/admin', [ProdukController::class, 'index'])->name('admin.index')->middleware('auth');
+Route::get('/orderpending', [AuthController::class, 'orderPending'])->name('admin.orderpending');
+Route::get('/orderconfirmed', [AuthController::class, 'orderConfirmed'])->name('admin.orderconfirmed');
+
 Route::get('/user', [AuthController::class, 'indexUser'])->name('user.index')->middleware('auth');
 
 

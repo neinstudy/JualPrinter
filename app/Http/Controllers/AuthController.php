@@ -25,11 +25,25 @@ class AuthController extends Controller
         "title" => "Home"
         ]);
     }
-    
+
     public function register()
     {
         return view('auth.register', [
             "title" => "Register"
+        ]);
+    }
+
+    public function orderPending()
+    {
+        return view('admin.orderpending', [
+            "title" => "Order Pending"
+        ]);
+    }
+
+    public function orderConfirmed()
+    {
+        return view('admin.orderconfirmed', [
+            "title" => "Order Confirmed"
         ]);
     }
 

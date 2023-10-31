@@ -1,2 +1,7 @@
+@extends('user.userlayouts.userheader')
 
-<h1>halo user</h1>
+@section('body')
+
+haloooo user
+
+@endsection
