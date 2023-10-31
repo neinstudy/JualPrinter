@@ -96,7 +96,7 @@ class ProdukController extends Controller
     public function usershow(Produk $produk)
     {
         return view('user.show', [
-            'title' => 'View Product', // Tambahkan judul di sini
+            'title' => 'View Product',
             'produk' => $produk
         ]);
     }

@@ -48,7 +48,8 @@ Route::get('/orderconfirmed', [AuthController::class, 'orderConfirmed'])->name('
 // Routes user
 // Route::get('/user', [AuthController::class, 'indexUser'])->name('user.index')->middleware('auth');
 Route::get('/user', [ProdukController::class, 'userindex'])->name('user.index')->middleware('auth');
-Route::get('/usershow', [ProdukController::class, 'usershow'])->name('user.show')->middleware('auth');
+// Route::get('/usershow', [ProdukController::class, 'usershow'])->name('user.show')->middleware('auth');
+Route::get('/produk/usershow/{produk}', [ProdukController::class, 'usershow'])->name('produk.usershow');
 
 
 

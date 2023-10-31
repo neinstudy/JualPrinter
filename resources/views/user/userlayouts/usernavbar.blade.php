@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #4497db;">
     <a class="navbar-brand" href="/user">
-        <img src="img/logoprinter.png" width="55" height="55" class="d-inline-block align-top" alt="">
+        <img src="{{ asset('img/logoprinter.png') }}" width="70" height="70" class="d-inline-block align-top" alt="">
         <h1 style="color: white; font-size: 30px; margin-left: 5px; text-align: left; display: inline-block; margin-top: 7px;"> <!-- Menambahkan margin-top -->
             Jual Beli Printer
         </h1>

@@ -5,10 +5,6 @@
     Daftar Produk
 </h2>
 
-<a href="{{ route('admin.create')}}">
-<button type="button" style="float: right; margin-top: 10px; margin-right: 15px;" class="btn btn-outline-danger">Add New Product</button>
-</a>
-
 @if($data->count() > 0)
 <div class="row">
 @foreach($data as $row)
@@ -28,8 +24,9 @@
         <form method="post" action="{{ route('produk.destroy', $row->id) }}">
             @csrf
             @method('DELETE')
-            <a href="{{ route('user.show', $row->id) }}" class="btn btn-primary btn-sm" style="width: 30%">View</a>
-            <a href="{{ route('produk.edit', $row->id) }}" class="btn btn-warning btn-sm" style="width: 30%">Edit</a>
+            <a href="{{ route('produk.usershow', $row->id) }}" class="btn btn-primary btn-sm" style="width: 30%">View</a>
+            <a href="{{ route('produk.edit', $row->id) }}" class="btn btn-warning btn-sm" style="width: 30%">Kart</a>
+            <a href="{{ route('produk.edit', $row->id) }}" class="btn btn-success btn-sm" style="width: 30%">Order</a>
         </form>
         </center>
     </div>
