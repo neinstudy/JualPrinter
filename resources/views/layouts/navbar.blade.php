@@ -1,7 +1,7 @@
   <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #4497db;">
     <a class="navbar-brand" href="/home">
         <img src="img/logoprinter.png" width="70" height="70" class="d-inline-block align-top" alt="">
-        <p style="color: white; font-size: 20px; margin-right: 10px; text-align: left; display: inline-block; margin-top: 10px;"> <!-- Menambahkan margin-top -->
+        <p style="font-weight: bold; color: white; font-size: 20px; margin-right: 10px; text-align: left; display: inline-block; margin-top: 10px;"> <!-- Menambahkan margin-top -->
             Jual Beli Printer <br>
             melayani dengan hati
         </p>
