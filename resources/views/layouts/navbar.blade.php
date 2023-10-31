@@ -1,7 +1,7 @@
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffee53;">
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #4497db;">
     <a class="navbar-brand" href="/home">
         <img src="img/logoprinter.png" width="70" height="70" class="d-inline-block align-top" alt="">
-        <p style="color: rgb(0, 0, 0); font-size: 20px; margin-right: 10px; text-align: left; display: inline-block; margin-top: 10px;"> <!-- Menambahkan margin-top -->
+        <p style="color: white; font-size: 20px; margin-right: 10px; text-align: left; display: inline-block; margin-top: 10px;"> <!-- Menambahkan margin-top -->
             Jual Beli Printer <br>
             melayani dengan hati
         </p>
@@ -13,12 +13,12 @@
         <ul class="navbar-nav ml-auto">
             <li class="nav-item" style="margin-right: 10px;">
                 <a href="/">
-                    <button type="button" class="btn btn-outline-primary">Login</button>
+                    <button type="button" class="btn btn-outline-light">Login</button>
                 </a>
             </li>
             <li class="nav-item" style="margin-right: 10px;">
                 <a href="/register">
-                    <button type="button" class="btn btn-outline-primary">Register</button>
+                    <button type="button" class="btn btn-outline-light">Register</button>
                 </a>
             </li>
         </ul>

@@ -10,8 +10,10 @@
 </a>
 
 @if($data->count() > 0)
+<div class="row">
     @foreach($data as $row)
-        <div class="card" style="width: 18rem; margin-right: 25px;">
+    
+        <div class="card" style="width: 18rem; margin-right: 25px; margin-top: 25px;">
             <td><img src="{{ asset('images/' . $row->foto_produk) }}" height="300" /></td>
             <div class="card-body">
                 <h5 class="card-title">{{ $row->nama_produk }}</h5>
@@ -34,6 +36,7 @@
             </div>
         </div>
     @endforeach
+    </div>
 @else
 <br>
     <tr>
