@@ -1,6 +1,15 @@
 @extends('admin.adminLayouts.adminHeader')
 
 @section('body')
+    <h2 style="color: rgb(0, 0, 0); font-size: 25px; margin-left: 35px; text-align: left; display: inline-block; margin-top: 10px;"> <!-- Menambahkan margin-top -->
+            Daftar Produk
+</h2>
+
+<a href="{{ route('admin.create')}}">
+    <button type="button" style="float: right; margin-top: 10px; margin-right: 15px;" class="btn btn-outline-danger">Add New Product</button>
+</a>
+
+
 @if($data->count() > 0)
     <table>
         <tr>

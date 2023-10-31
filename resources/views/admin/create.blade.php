@@ -52,7 +52,7 @@
                     </div>
                 </div>
                 <div class="text-center">
-                    <input type="submit" class="btn btn-primary" value="Tambah" />
+                    <input type="submit" class="btn btn-primary" value="Confirm" />
                 </div>    
             </form>
         </div>
