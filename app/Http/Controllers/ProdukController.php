@@ -22,6 +22,16 @@ class ProdukController extends Controller
         ]);
     }
 
+    public function userindex()
+    {
+        $data = Produk::latest()->get();
+
+        return view('user.index', [
+            'title' => 'List of Products',
+            'data' => $data
+        ]);
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -78,6 +88,14 @@ class ProdukController extends Controller
     public function show(Produk $produk)
     {
         return view('admin.show', [
+            'title' => 'View Product', // Tambahkan judul di sini
+            'produk' => $produk
+        ]);
+    }
+
+    public function usershow(Produk $produk)
+    {
+        return view('user.show', [
             'title' => 'View Product', // Tambahkan judul di sini
             'produk' => $produk
         ]);

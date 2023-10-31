@@ -45,7 +45,11 @@ Route::get('/admin', [ProdukController::class, 'index'])->name('admin.index')->m
 Route::get('/orderpending', [AuthController::class, 'orderPending'])->name('admin.orderpending');
 Route::get('/orderconfirmed', [AuthController::class, 'orderConfirmed'])->name('admin.orderconfirmed');
 
-Route::get('/user', [AuthController::class, 'indexUser'])->name('user.index')->middleware('auth');
+// Routes user
+// Route::get('/user', [AuthController::class, 'indexUser'])->name('user.index')->middleware('auth');
+Route::get('/user', [ProdukController::class, 'userindex'])->name('user.index')->middleware('auth');
+Route::get('/usershow', [ProdukController::class, 'usershow'])->name('user.show')->middleware('auth');
+
 
 
 // Middleware
