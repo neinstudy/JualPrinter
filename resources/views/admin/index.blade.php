@@ -1,7 +1,7 @@
 @extends('admin.adminLayouts.adminHeader')
 
 @section('body')
-    <h2 style="color: rgb(0, 0, 0); font-size: 25px; margin-left: 35px; text-align: left; display: inline-block; margin-top: 10px;"> <!-- Menambahkan margin-top -->
+    <h2 style="color: rgb(0, 0, 0); font-size: 25px; text-align: left; display: inline-block; margin-top: 10px;"> <!-- Menambahkan margin-top -->
             Daftar Produk
 </h2>
 
@@ -40,6 +40,7 @@
         @endforeach
     </table>
 @else
+<br>
     <tr>
         <td colspan="6" class="text-center">No Data Found</td> <!-- Sesuaikan dengan jumlah kolom yang ada (ditambahkan kolom Stock) -->
     </tr>
