@@ -16,7 +16,7 @@
                 <a class="nav-link {{($title === "Home")?'active':''}}" href="/user" style="color: white; margin-right: 20px; font-size: 20px;">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{($title === "Keranjang")?'active':''}}" href="" style="color: white; margin-right: 20px; font-size: 20px;">Keranjang</a>
+                <a class="nav-link {{($title === "Wishlist")?'active':''}}" href="/wishlist" style="color: white; margin-right: 20px; font-size: 20px;">Wishlist</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link {{($title === "Order")?'active':''}}" href="" style="color: white; margin-right: 20px; font-size: 20px;">Order</a>

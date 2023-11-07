@@ -50,6 +50,12 @@ Route::get('/orderconfirmed', [AuthController::class, 'orderConfirmed'])->name('
 Route::get('/user', [ProdukController::class, 'userindex'])->name('user.index')->middleware('auth');
 // Route::get('/usershow', [ProdukController::class, 'usershow'])->name('user.show')->middleware('auth');
 Route::get('/produk/usershow/{produk}', [ProdukController::class, 'usershow'])->name('produk.usershow');
+Route::post('/add-to-wishlist/{produk}', [ProdukController::class, 'addToWishlist'])->name('user.addToWishlist');
+Route::get('/wishlist', [ProdukController::class, 'Wishlist'])->name('user.wishlist');
+Route::delete('/wishlist/remove/{wishlist}', [ProdukController::class, 'removeFromWishlist'])->name('user.removeFromWishlist');
+
+
+
 
 
 
