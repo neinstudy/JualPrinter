@@ -26,7 +26,7 @@
             @method('DELETE')
             <a href="{{ route('produk.usershow', $row->id) }}" class="btn btn-primary btn-sm" style="width: 30%">View</a>
             <a href="{{ route('produk.edit', $row->id) }}" class="btn btn-warning btn-sm" style="width: 30%">Kart</a>
-            <a href="{{ route('produk.edit', $row->id) }}" class="btn btn-success btn-sm" style="width: 30%">Order</a>
+<a href="{{ route('produk.makeorder', $row->id) }}" class="btn btn-success btn-sm" style="width: 30%">Order</a>
         </form>
         </center>
     </div>

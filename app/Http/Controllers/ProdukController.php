@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Produk;
+use App\Models\Order; 
 use Illuminate\Http\Request;
 
 class ProdukController extends Controller
@@ -44,6 +45,8 @@ class ProdukController extends Controller
             'title' => 'Create New Product' // Tambahkan title di sini
         ]);
     }
+
+    
 
     /**
      * Store a newly created resource in storage.
@@ -100,6 +103,41 @@ class ProdukController extends Controller
             'produk' => $produk
         ]);
     }
+
+    public function order()
+    {
+        return view('user.order', [
+            'title' => 'Order Product'
+        ]);
+    }
+
+    public function makeorder(Request $request, Produk $produk)
+    {
+        return view('user.makeorder', [
+            'title' => 'Order Product',
+            'produk' => $produk
+        ]);
+        $request->validate([
+            'nama_pemesan' => 'required',
+            'no_telpon' => 'required',
+            'kode_pos' => 'required',
+            'count' => 'required|integer',
+            'alamat_pemesan' => 'required',
+        ]);
+
+        // Save the order to the "orders" table
+        $order = new Order;
+        $order->produk_id = $produk->id;
+        $order->nama_pemesan = $request->nama_pemesan;
+        $order->no_telpon = $request->no_telpon;
+        $order->kode_pos = $request->kode_pos;
+        $order->count = $request->count;
+        $order->alamat_pemesan = $request->alamat_pemesan;
+        $order->save();
+
+        return redirect()->route('user.index')->with('success', 'Pesanan telah berhasil disimpan.');
+    }
+
 
     /**
      * Show the form for editing the specified resource.

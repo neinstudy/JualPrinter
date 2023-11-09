@@ -19,7 +19,7 @@
                 <a class="nav-link {{($title === "Keranjang")?'active':''}}" href="" style="color: white; margin-right: 20px; font-size: 20px;">Keranjang</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{($title === "Order")?'active':''}}" href="" style="color: white; margin-right: 20px; font-size: 20px;">Order</a>
+                <a class="nav-link {{($title === "Order")?'active':''}}" href="/order" style="color: white; margin-right: 20px; font-size: 20px;">Order</a>
             </li>
                 <li class="nav-item" style="margin-right: 10px;">
                     <form action="/logout" method="POST">
