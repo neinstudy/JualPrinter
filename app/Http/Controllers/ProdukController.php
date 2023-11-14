@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Produk;
 use App\Models\Order; 
+use App\Models\Wishlist;
 use Illuminate\Http\Request;
 
 class ProdukController extends Controller
@@ -25,11 +26,36 @@ class ProdukController extends Controller
 
     public function userindex()
     {
+
         $data = Produk::latest()->get();
 
         return view('user.index', [
             'title' => 'List of Products',
             'data' => $data
+        ]);
+    }
+
+    public function addToWishlist(Request $request, Produk $produk)
+    {
+
+        // Anda dapat menambahkan validasi sesuai kebutuhan di sini
+        $wishlist = new Wishlist();
+        $wishlist->id_user = auth()->user()->id;
+        $wishlist->id_produk = $produk->id;
+        $wishlist->save();
+
+        return redirect()->back()->with('success', 'Produk telah ditambahkan ke wishlist.');
+    }
+
+    public function wishlist(Produk $produk)
+    {
+        $user = auth()->user();
+        $wishlist = Wishlist::where('id_user', $user->id)->with('produk')->get();
+
+        return view('user.wishlist', [
+            'wishlist' => $wishlist,
+            "title" => "Wishlist",
+            'produk' => $produk
         ]);
     }
 
@@ -203,5 +229,16 @@ class ProdukController extends Controller
         $produk->delete();
 
         return redirect()->route('admin.index')->with('success', 'Produk Data deleted successfully');
+    }
+
+    public function removeFromWishlist(Wishlist $wishlist)
+    {
+        // Pastikan user saat ini adalah pemilik Wishlist item
+        if (auth()->user()->id === $wishlist->id_user) {
+            $wishlist->delete();
+            return redirect()->back()->with('success', 'Item telah dihapus dari Wishlist.');
+        } else {
+            return redirect()->back()->with('error', 'Anda tidak memiliki izin untuk menghapus item dari Wishlist.');
+        }
     }
 }
