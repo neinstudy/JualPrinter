@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use App\Models\Produk;
 use App\Models\Wishlist;
 use Illuminate\Http\Request;
@@ -188,9 +189,12 @@ class ProdukController extends Controller
      */
     public function destroy(Produk $produk)
     {
+        DB::table('wishlists')->where('id_produk', $produk->id)->delete();
+
         $produk->delete();
 
-        return redirect()->route('admin.index')->with('success', 'Produk Data deleted successfully');
+        // Redirect ke halaman index produk atau ke halaman lain yang sesuai
+        return redirect()->route('produk.index')->with('success', 'Produk berhasil dihapus');
     }
 
     public function removeFromWishlist(Wishlist $wishlist)

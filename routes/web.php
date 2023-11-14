@@ -44,6 +44,7 @@ Route::get('/create', [ProdukController::class, 'create'])->name('admin.create')
 Route::get('/admin', [ProdukController::class, 'index'])->name('admin.index')->middleware('auth');
 Route::get('/orderpending', [AuthController::class, 'orderPending'])->name('admin.orderpending');
 Route::get('/orderconfirmed', [AuthController::class, 'orderConfirmed'])->name('admin.orderconfirmed');
+Route::delete('/produk/remove/{produk}', [ProdukController::class, 'destroy'])->name('produk.destroy');
 
 // Routes user
 // Route::get('/user', [AuthController::class, 'indexUser'])->name('user.index')->middleware('auth');
