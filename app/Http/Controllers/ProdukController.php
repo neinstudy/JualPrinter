@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use App\Models\Produk;
-use App\Models\Order; 
+use App\Models\Order;
 use App\Models\Wishlist;
 use Illuminate\Http\Request;
 
@@ -73,7 +73,7 @@ class ProdukController extends Controller
         ]);
     }
 
-    
+
 
     /**
      * Store a newly created resource in storage.
@@ -131,39 +131,97 @@ class ProdukController extends Controller
         ]);
     }
 
-    public function order()
+    public function order(Produk $produk)
     {
+        $user = auth()->user();
+
+        if (!$user) {
+            // Handle case when user is not authenticated
+            return redirect()->route('login');
+        }
+
+        $order = Order::where('id_user', $user->id)->with('produk')->get();
+
         return view('user.order', [
-            'title' => 'Order Product'
+            'title' => 'Order Product',
+            'order' => $order,
+            'produk' => $produk
         ]);
     }
 
+
     public function makeorder(Request $request, Produk $produk)
     {
+        if ($request->isMethod('post')) {
+            // Handle form submission and store order
+            $request->validate([
+                'nama_pemesan' => 'required',
+                'no_telpon' => 'required',
+                'kode_pos' => 'required',
+                'count' => 'required|integer',
+                'alamat_pemesan' => 'required',
+            ]);
+
+            // Get the price of the product
+            $harga_produk = $produk->harga_produk;
+
+            // Calculate the total
+            $total = $harga_produk * $request->count;
+
+            // Save the order to the "orders" table
+            $order = new Order;
+            $order->id_user = auth()->user()->id;
+            $order->id_produk = $produk->id;
+            $order->nama_pemesan = $request->nama_pemesan;
+            $order->no_telpon = $request->no_telpon;
+            $order->kode_pos = $request->kode_pos;
+            $order->count = $request->count;
+            $order->alamat_pemesan = $request->alamat_pemesan;
+            $order->status = 'Belum dikonfirmasi';
+            $order->total = $total; // Assign the calculated total
+
+            $order->save();
+
+            return redirect()->route('user.index')->with('success', 'Pesanan telah berhasil disimpan.');
+        }
+
+        // Show the form for making an order
         return view('user.makeorder', [
             'title' => 'Order Product',
             'produk' => $produk
         ]);
-        $request->validate([
-            'nama_pemesan' => 'required',
-            'no_telpon' => 'required',
-            'kode_pos' => 'required',
-            'count' => 'required|integer',
-            'alamat_pemesan' => 'required',
-        ]);
-
-        // Save the order to the "orders" table
-        $order = new Order;
-        $order->produk_id = $produk->id;
-        $order->nama_pemesan = $request->nama_pemesan;
-        $order->no_telpon = $request->no_telpon;
-        $order->kode_pos = $request->kode_pos;
-        $order->count = $request->count;
-        $order->alamat_pemesan = $request->alamat_pemesan;
-        $order->save();
-
-        return redirect()->route('user.index')->with('success', 'Pesanan telah berhasil disimpan.');
     }
+
+    public function orderPending(Produk $produk)
+    {
+        $pendingOrders = Order::where('status', 'Belum dikonfirmasi')->with('produk')->get();
+
+        return view('admin.orderpending', [
+            'title' => 'Order Pending',
+            'pendingOrders' => $pendingOrders,
+            'produk' => $produk
+        ]);
+    }
+
+    public function confirmOrder(Order $order)
+    {
+        // Ubah status menjadi "Sudah dikonfirmasi"
+        $order->update(['status' => 'Sudah dikonfirmasi']);
+
+        return redirect()->route('admin.orderpending')->with('success', 'Pesanan berhasil dikonfirmasi.');
+    }
+
+    public function orderConfirmed(Produk $produk)
+    {
+        $confirmedOrders = Order::where('status', 'Sudah dikonfirmasi')->with('produk')->get();
+
+        return view('admin.orderconfirmed', [
+            'title' => 'Order Confirmed',
+            'confirmedOrders' => $confirmedOrders,
+            'produk' => $produk
+        ]);
+    }
+
 
 
     /**

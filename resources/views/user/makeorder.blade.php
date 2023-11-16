@@ -5,13 +5,12 @@
         Memesan Printer
     </h2>
     <div class="container" style="background-color: #4497db; border-radius: 20px; padding: 20px; color: white;">
-<form method="post" action="{{ route('produk.makeorder.store', $produk->id) }}" enctype="multipart/form-data">
+<form method="post" action="{{ route('produk.makeorder', $produk->id) }}" enctype="multipart/form-data">
             @csrf
-            @method('PUT')
 
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <img src="{{ asset('images/' . $produk->foto_produk) }}" width="100" class="img-thumbnail" />
+                    <img src="{{ asset('images/' . $produk->foto_produk) }}" width="150" class="img-thumbnail" />
                 </div>
                 <div class="form-group col-md-3">
                     <label for="nama_produk" class="col-form-label">Nama Produk:</label>

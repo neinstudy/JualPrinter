@@ -42,8 +42,9 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 Route::resource('produk', ProdukController::class);
 Route::get('/create', [ProdukController::class, 'create'])->name('admin.create')->middleware('auth');
 Route::get('/admin', [ProdukController::class, 'index'])->name('admin.index')->middleware('auth');
-Route::get('/orderpending', [AuthController::class, 'orderPending'])->name('admin.orderpending');
-Route::get('/orderconfirmed', [AuthController::class, 'orderConfirmed'])->name('admin.orderconfirmed');
+Route::get('/orderpending', [ProdukController::class, 'orderPending'])->name('admin.orderpending');
+Route::get('/orderconfirmed', [ProdukController::class, 'orderConfirmed'])->name('admin.orderconfirmed');
+Route::post('/admin/confirm-order/{order}', [ProdukController::class, 'confirmOrder'])->name('admin.confirmOrder');
 Route::delete('/produk/remove/{produk}', [ProdukController::class, 'destroy'])->name('produk.destroy');
 
 // Routes user
@@ -52,7 +53,7 @@ Route::get('/user', [ProdukController::class, 'userindex'])->name('user.index')-
 // Route::get('/usershow', [ProdukController::class, 'usershow'])->name('user.show')->middleware('auth');
 Route::get('/produk/usershow/{produk}', [ProdukController::class, 'usershow'])->name('produk.usershow');
 Route::get('/order', [ProdukController::class, 'order'])->name('user.order')->middleware('auth');
-Route::get('/produk/makeorder/{produk}', [ProdukController::class, 'makeorder'])->name('produk.makeorder');
+Route::any('/produk/makeorder/{produk}', [ProdukController::class, 'makeorder'])->name('produk.makeorder');
 Route::post('/add-to-wishlist/{produk}', [ProdukController::class, 'addToWishlist'])->name('user.addToWishlist');
 Route::get('/wishlist', [ProdukController::class, 'Wishlist'])->name('user.wishlist');
 Route::delete('/wishlist/remove/{wishlist}', [ProdukController::class, 'removeFromWishlist'])->name('user.removeFromWishlist');

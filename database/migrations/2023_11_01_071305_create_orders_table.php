@@ -10,15 +10,19 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('produk_id');
+            $table->unsignedBigInteger('id_user');
+            $table->unsignedBigInteger('id_produk');
             $table->string('nama_pemesan');
             $table->string('no_telpon');
             $table->string('kode_pos');
             $table->integer('count');
             $table->text('alamat_pemesan');
+            $table->string('status')->default('Belum dikonfirmasi');
+            $table->integer('total');
             $table->timestamps();
 
-            $table->foreign('produk_id')->references('id')->on('produks')->onDelete('cascade');
+            $table->foreign('id_produk')->references('id')->on('produks')->onDelete('cascade');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

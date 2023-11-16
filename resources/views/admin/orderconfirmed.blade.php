@@ -1,30 +1,38 @@
 @extends('admin.adminlayouts.adminheader')
 @section('body')
 
-<body class="text-center">
-    <main>
-        <h1 style="text-align: left;">Daftar Pesanan</h1>
-        <h3 style="text-align: left;">1 Produk</h3><br>
-
-        <div class="card" style="width: 18rem; margin-right: 25px;">
-            <img src="img/Printer1.jpg" class="card-img-top" alt="printer 1" height="300">
-            <div class="card-body">
-              <h5 class="card-title">Printer Canon MegaTank</h5>
-              <p class="card-text">The Canon MegaTank refillable printer is my new go-to reliable printer for running my business. It holds 30x the amount of ink vs a standard inkjet printer.</p>
-            </div>
-            <ul class="list-group list-group-flush" style="text-align: left;">
-              <li class="list-group-item">Pemesan   : David</li>
-              <li class="list-group-item">Telp      : 081245328176</li>
-              <li class="list-group-item">Alamat    : Jl. Dakota V</li>
-              <li class="list-group-item">Status    : Pending</li>
-            </ul>
-            <div class="card-body">
-                <p style="text-align: left; color: #1bb13b; font-weight: bold;">Total Harga : Rp. 2,000,000</p>
-                <h5 style="color: #3d5aff; font-weight: bold;">Pesanan telah dikonfirmasi</h5>
-            </div>
-          </div>
-
-    </main>
-</body>
-
+    <body>
+        <main>
+            <h1 style="text-align: left;">Daftar Pesanan</h1>
+            <span class="badge bg-primary" style="font-size: 25px;">{{ $confirmedOrders->count() }} Produk</span>
+            <br><br>
+            @if ($confirmedOrders->count() > 0)
+                <div class="row">
+                    @foreach ($confirmedOrders as $row)
+                        <div class="card" style="width: 18rem; margin-right: 25px;">
+                            <img src="{{ asset('images/' . $row->produk->foto_produk) }}" class="card-img-top" alt="printer 1"
+                                height="300">
+                            <div class="card-body" style="text-align: left;">
+                                <h5 class="card-title">{{ $row->produk->nama_produk }}</h5>
+                                <p class="card-text">{{ $row->produk->detail_produk }}</p>
+                            </div>
+                            <ul class="list-group list-group-flush" style="text-align: left;">
+                                <li class="list-group-item">Pemesan : {{ $row->nama_pemesan }}</li>
+                                <li class="list-group-item">Telp : {{ $row->no_telpon }}</li>
+                                <li class="list-group-item">Alamat : {{ $row->alamat_pemesan }}</li>
+                                <li class="list-group-item">Count : {{ $row->count }}</li>
+                            </ul>
+                            <div class="card-body">
+                                <p style="text-align: left; color: #1bb13b; font-weight: bold;">Total Harga :
+                                    {{ $row->total }}</p>
+                                <h5 style="color: #3d5aff; font-weight: bold;">{{ $row->status }}</h5>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            @else
+                <p>Tidak ada pesanan saat ini.</p>
+            @endif
+        </main>
+    </body>
 @endsection

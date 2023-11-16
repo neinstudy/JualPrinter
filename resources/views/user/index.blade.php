@@ -30,7 +30,7 @@
                                     <button type="submit" class="btn btn-danger btn-sm"
                                         style="width: 30%">Wishlist</button>
 
-                                    <a href="{{ route('produk.usershow', $row->id) }}" class="btn btn-success btn-sm"
+                                    <a href="{{ route('produk.makeorder', $row->id) }}" class="btn btn-success btn-sm"
                                         style="width: 30%">Order</a>
                                 </form>
                             </div>

@@ -33,20 +33,6 @@ class AuthController extends Controller
         ]);
     }
 
-    public function orderPending()
-    {
-        return view('admin.orderpending', [
-            "title" => "Order Pending"
-        ]);
-    }
-
-    public function orderConfirmed()
-    {
-        return view('admin.orderconfirmed', [
-            "title" => "Order Confirmed"
-        ]);
-    }
-
     public function logout(Request $request)
     {
         Auth::logout();
